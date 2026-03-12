@@ -3,9 +3,9 @@
   // 1. 훨씬 가벼운 Python 전용 이미지로 변경
   "image": "mcr.microsoft.com/devcontainers/python:3.12",
   "features": {
-    // 2. 여기서 Node.js 20을 설치합니다.
+    // 2. 여기서 Node.js 22을 설치합니다.
     "ghcr.io/devcontainers/features/node:1": {
-      "version": "24"
+      "version": "22"
     }
   },
   "customizations": {
