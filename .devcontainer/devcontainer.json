@@ -1,7 +1,9 @@
 {
-  "name": "Fixed Python & Node Dev",
-  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "name": "Python & Node Optimized",
+  // 1. 훨씬 가벼운 Python 전용 이미지로 변경
+  "image": "mcr.microsoft.com/devcontainers/python:3.12",
   "features": {
+    // 2. 여기서 Node.js 20을 설치합니다.
     "ghcr.io/devcontainers/features/node:1": {
       "version": "24"
     }
@@ -15,9 +17,10 @@
       ]
     }
   },
-  // 명령어가 실패해도 컨테이너는 뜨도록 분리
-  "updateContentCommand": "python3 -m pip install -r requirements.txt || echo 'pip install failed but continuing...'",
   "hostRequirements": {
     "cpus": 4
-  }
+  },
+  // 3. pip 설치 시 캐시를 사용하지 않아 용량을 아낍니다.
+  "updateContentCommand": "python3 -m pip install --no-cache-dir -r requirements.txt",
+  "waitFor": "updateContentCommand"
 }
